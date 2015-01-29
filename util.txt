@@ -1,0 +1,19 @@
+http://openlibrary.org/developers/dumps
+
+http://stedolan.github.io/jq/
+
+Verifica codigo repetidos
+head -n 3000000 ol_dump_works_2013-07-31.txt |awk '{$1=$2=$3=$4=""; print $0}' |jq -r '.key' |cut -c 10-16 |tr -d 'W' |sort |uniq -c |sort -k 1
+
+Ordena arquivo:
+sort -k2 ol_dump_authors_2013-08-31.txt > ol_dump_authors_sorted_2013-08-31.txt
+
+Remove linha invalida do arquivo:
+sed -i '/^\/.*\/.*$/d' ol_dump_formated_teste.txt
+
+Pesquisa binaria:
+http://www.vivaolinux.com.br/script/Pesquisa-Binaria-usando-BashShell
+
+Funcao hash:
+for i in {1..3000000}; do echo $(($i%10000)); done |sort -n | uniq -c |less
+
